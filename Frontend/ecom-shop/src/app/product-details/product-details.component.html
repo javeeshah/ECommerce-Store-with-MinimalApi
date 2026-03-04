@@ -1,0 +1,18 @@
+
+  <div class="details">
+    <img [src]="getImagePath()" [alt]=" product().name" />
+    <div>
+      <h2>{{ product().name }}</h2>
+      <p>{{ product().description }}</p>
+      <p>Part Type: {{ product().category }}</p>
+      <p>Stock: {{ stock() }}</p>
+    </div>
+  </div>
+  <div class="price">
+    <p [ngClass]="getPriceClass()">{{ product().price | currency }}</p>
+    @if (product().discount > 0) {
+      <p class="discount">{{ product().price * (1 - product().discount) | currency }}</p>
+    }
+      
+    <button class="cta" (click)="addCart($event)" >Buy</button>
+  </div>
