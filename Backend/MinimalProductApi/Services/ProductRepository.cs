@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MinimalProductApi.Dtos;
 using MinimalProductApi.Entities;
+using MinimalProductApi.Helpers;
 
 namespace MinimalProductApi.DbContexts
 {
@@ -32,9 +33,9 @@ namespace MinimalProductApi.DbContexts
             return _productDbContext.Products.First(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync()
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            return await _productDbContext.Products.ToListAsync();
+            return ShopProducts.GetAllShopProducts();
         }
 
         public async Task SaveProductAsync(ProductDto productDto)
