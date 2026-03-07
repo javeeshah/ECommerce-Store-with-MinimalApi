@@ -16,10 +16,24 @@ namespace MinimalProductApi.DbContexts
         {
             modelBuilder.Entity<Product>(entity =>
             {
+                //entity.Property(p => p.Id).ValueGeneratedOnAdd();
                 entity.ToTable("Products");
-                entity.HasKey(p => p.Id).HasName("PK_Product");
+                entity.HasKey(p => p.Id)
+                       .HasName("PK_Product");
             });
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges()
+        {
+            foreach (var entry in ChangeTracker.Entries<BaseEntity>())
+            {
+                if (entry.State == EntityState.Modified)
+                {
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                }
+            }
+            return base.SaveChanges();
         }
     }
 }

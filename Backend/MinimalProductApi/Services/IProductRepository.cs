@@ -7,8 +7,8 @@ namespace MinimalProductApi.DbContexts
     {
         Task SaveProductAsync(ProductDto productDto);
 
-        Task<IEnumerable<Product>> GetProductsAsync();
-
+        Task<IEnumerable<Product>> GetAllProductsAsync();
+        
         Task<Product?> GetProductByIdAsync(int id);
 
         Task UpdateProductAsync(int id, ProductDto productDto);

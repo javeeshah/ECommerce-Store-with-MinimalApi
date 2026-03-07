@@ -12,7 +12,22 @@ namespace MinimalProductApi.Dtos
         public string Name { get; set; } = string.Empty;
 
         [Required]
+        [StringLength(500)]
+        public string Description { get; set; } = string.Empty;
+
+
+        [Required]
+        [StringLength(100)]
+        public string Category { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(100)]
+        public string ImageName { get; set; } = string.Empty;
+
+        [Required]
         [Range(minimum: 0.01, maximum: (double)decimal.MaxValue, ErrorMessage = "The Price field must be greater than zero")]
         public decimal Price { get; set; }
+
+        public decimal Discount { get; set; }
     }
 }

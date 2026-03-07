@@ -1,7 +1,8 @@
-﻿namespace MinimalProductApi.Entities
+﻿namespace MinimalProductApi.Helpers
 {
-    public class Product: BaseEntity
+    public class ProductJson
     {
+        public int Id { get; set; }
         public string Description { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string ImageName { get; set; } = string.Empty;
